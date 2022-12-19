@@ -1,0 +1,46 @@
+import requests
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import csv
+import re
+import pandas as pd
+
+
+
+URL = "https://www.flipkart.com/search?q=mobiles&as=on&as-show=on&otracker=AS_Query_TrendingAutoSuggest_1_0_na_na_na&otracker1=AS_Query_TrendingAutoSuggest_1_0_na_na_na&as-pos=1&as-type=TRENDING&suggestionId=mobiles&requestId=83648752-0c6f-4ba1-a0e3-e0e3e21ef137"
+page = requests.get(URL)
+soup = BeautifulSoup(page.content, 'lxml')
+lists = soup.findAll('div',attrs={'class' :'_1AtVbE col-12-12'})
+
+
+            
+prod = []
+pree = []
+mrr = []
+for list in lists:
+    product = list.find('div',attrs={'class':"_4rR01T"}) 
+    if product is not None:
+        ementa = product.text
+    else:
+        ementa = None
+    prod.append(ementa)
+    sprice = list.find('div', attrs={'class':'_30jeq3 _1_WHN1'})
+    if sprice is not None:
+        sprr = sprice.text
+    else:
+        sprr = None
+    pree.append(sprr)
+    # pree.append(sprice)
+    # print(price)
+    mrp = list.find('div', attrs={'class':'_3I9_wc _27UcVY'})
+    if mrp is not None:
+        mpp = mrp.text
+    else:
+        mpp = None
+    mrr.append(mpp)
+
+    # mrr.append(mrp)
+
+df = pd.DataFrame({'Product Name':prod,'Selling Price':pree, 'MRP':mrr}) 
+df.to_csv('Fkmobs.csv', index=False, encoding='utf-8') 
+   
