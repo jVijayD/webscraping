@@ -7,43 +7,40 @@ import pandas as pd
 
 
 
-URL = "https://www.amazon.in/s?k=mobiles&crid=1KQOU9AK308PZ&sprefix=mobile%2Caps%2C976&ref=nb_sb_noss_1"
-page = requests.get(URL)
-soup = BeautifulSoup(page.content, 'lxml')
-lists = soup.findAll('div',attrs={'class' :'a-section'})
-
-          
+URL = ['https://www.amazon.in/s?k=Divas+Choice&i=apparel&crid=KLDRFHJZMPFH&qid=1672290588&sprefix=divas+choice+%2Capparel%2C264&ref=sr_pg_1','https://www.amazon.in/s?k=lux+venus+white+sleeveless+vest+pack&i=apparel&crid=13273ZOPDEJAW&sprefix=lux+venus+white+sleeveless+vest+pack+%2Capparel%2C452&ref=nb_sb_noss','https://www.amazon.in/s?k=Lux+Cozi+Men+Cotton+underwear+pack&i=apparel&crid=PVZOJ823HPIU&sprefix=lux+cozi+men+cotton+underwear+pack+%2Capparel%2C254&ref=nb_sb_noss','https://www.amazon.in/s?k=Men%27s+Jeans+By+Edit+Look&i=apparel&crid=22BZVWVNOKO1W&sprefix=men+s+jeans+by+edit+look%2Capparel%2C248&ref=nb_sb_noss','https://www.amazon.in/s?k=Palazzo+Rayon+Fabric&i=apparel&crid=KAEN9XBTBFC0&sprefix=p+palazzo+rayon+fabric%2Capparel%2C1044&ref=nb_sb_noss','https://www.amazon.in/s?k=Kurta+%26+Color+Sharara+Set+Rayon+Fabric&i=apparel&crid=18VXYVL72E3XU&sprefix=blu+kurta+%26+color+sharara+set+rayon+fabric%2Capparel%2C489&ref=nb_sb_noss','https://www.amazon.in/s?k=Maxi+Dress+Baby+Girl&i=apparel&crid=1MY09P7A2U0L2&sprefix=maxi+dress+baby+girl%2Capparel%2C509&ref=nb_sb_noss_2','https://www.amazon.in/s?k=Ripening+Baby+Girls+Gown+Dress&i=apparel&crid=21XRHHKEHOCDS&sprefix=ripening+baby+girls+gown+dress%2Capparel%2C242&ref=nb_sb_noss','https://www.amazon.in/s?k=Ripening+Baby+Girls+Mini+Frock&i=apparel&crid=21H1EHILC8DI0&sprefix=ripening+baby+girls+mini+frock%2Capparel%2C463&ref=nb_sb_noss','https://www.amazon.in/s?k=Ripening+Baby+Girls+Ston+Work+Body+Knee+Length+Frock&i=apparel&crid=3QOET6257NHC6&sprefix=ripening+baby+girls+ston+work+body+knee+length+frock%2Capparel%2C226&ref=nb_sb_noss','https://www.amazon.in/Dresses-Ripening-Baby-Girls/s?rh=n%3A1953222031%2Cp_89%3ARipening','https://www.amazon.in/s?k=saree+mall+sarees+for+women&i=apparel&crid=3F14IJ24JNMS7&sprefix=Saree+Mall%2Capparel%2C253&ref=nb_sb_ss_softlines-tsdoa-joint-contextual-iss_2_10','https://www.amazon.in/s?k=Girls+Maxi+%2F+Full+Length+Party+Dress+-+By+My+Lil+Princess&i=apparel&rh=p_6%3AA1O4CGDVZCF8V5&dc&ds=v1%3AoeKeDSCLZ6mX2HvH8e4KnrkWXfu1MrOuUXQACFOHf8A&crid=XVI4T5HAIEUP&qid=1672294303&rnid=1318474031&sprefix=girls+maxi+%2F+full+length+party+dress+-+by+my+lil+princess%2Capparel%2C253&ref=sr_nr_p_6_1','https://www.amazon.in/s?k=Divra+Clothing+kids+Hoodies&i=apparel&crid=NKNCFDI8YJ7Z&sprefix=divra+clothing+kids+hoodies%2Capparel%2C301&ref=nb_sb_noss','https://www.amazon.in/s?k=ALTEC+LANSING&ref=nb_sb_noss_1','https://www.amazon.in/s?k=Deshbandhu+Dbk&crid=ZN4T8GFSQRWZ&sprefix=deshbandhu+dbk+%2Caps%2C263&ref=nb_sb_noss_2','https://www.amazon.in/s?k=Divra+Clothing','https://www.amazon.in/s?k=Aspire+Laptop&crid=2J75NA6PRIUNR&sprefix=aspire+laptop%2Caps%2C243&ref=nb_sb_noss_1','https://www.amazon.in/s?k=Nitro+Laptop&rh=n%3A1375424031%2Cp_89%3AAcer&dc&ds=v1%3AngmrFcqxSQSs9DsGqgaxaOVFMd6BcM5d5v5RJMHWZzg&crid=2K5XGFF0U86XT&qid=1672295912&rnid=3837712031&sprefix=nitro+laptop%2Caps%2C290&ref=sr_nr_p_89_1','https://www.amazon.in/s?k=Swift+Laptop&rh=n%3A1375424031&ref=nb_sb_noss','https://www.flipkart.com/mens-sweatshirts/divra-clothing~brand/pr?sid=clo,qvw,64a,vui&marketplace=FLIPKART&otracker=product_breadCrumbs_DivRa+Clothing+Men%27s+Sweatshirts','https://www.amazon.in/s?k=divra+clothing+hoodie&i=apparel&rh=n%3A11960414031%2Cp_6%3AA3IB8ZL7SYIVGZ&dc&ds=v1%3AKCugRWMBZDmrC%2F2XzPaxuHmx2B4gE4JzCK80cxvgtQI&qid=1672296212&rnid=1318474031&ref=sr_nr_p_6_2','https://www.amazon.in/s?k=samsung+a32&crid=10IE9IR39JN5L&sprefix=samsung+a32+%2Caps%2C232&ref=nb_sb_noss_2','https://www.amazon.in/s?k=samsung+a03s&crid=1M68TK7HG3RPC&sprefix=samsung+a03s%2Caps%2C346&ref=nb_sb_noss_1','https://www.amazon.in/s?k=samsung+a52s&crid=IYN7IWMO61N7&sprefix=samsung+a52s%2Caps%2C240&ref=nb_sb_noss_1','https://www.amazon.in/s?k=GLITO+Printed+Men+Boxer&crid=2ISKKM7GNU9LW&sprefix=glito+printed+men+boxer+%2Caps%2C225&ref=nb_sb_noss','https://www.amazon.in/s?k=Zesteez&crid=3SXBU1BUPAEZ0&sprefix=zesteez+%2Caps%2C230&ref=nb_sb_noss_2','https://www.amazon.in/s?k=glito+full+sleeve+solid+men+jacket&crid=1J7K222OAIWRL&sprefix=glito+full+sleeve+solid+men+jacket%2Caps%2C251&ref=nb_sb_noss_1','https://www.amazon.in/s?k=GLITO+Casual+Regular+Sleeves+Solid+Women&crid=2U7QX6S7QOXLX&sprefix=glito+casual+regular+sleeves+solid+women+%2Caps%2C261&ref=nb_sb_noss','https://www.amazon.in/s?k=GLITO+Solid+Men+Track+Suit&crid=28SB3T7STLONN&sprefix=glito+solid+men+track+suit%2Caps%2C289&ref=nb_sb_noss','https://www.amazon.in/s?k=GLITO+Solid+Men+Round+Neck+Blue+T-Shirt&crid=3Q8X5GCCZUW1G&sprefix=glito+solid+men+round+neck+blue+t-shirt%2Caps%2C239&ref=nb_sb_noss','https://www.amazon.in/s?k=Apple+iPhone&crid=2NI7KP7N9RUV&sprefix=apple+iphone+%2Caps%2C283&ref=nb_sb_noss_2','https://www.amazon.in/s?k=Dell+24%22+%2860.96+cm%29+FHD+Monitor+1&i=computers&crid=1HEETJZ7P729S&sprefix=%2Ccomputers%2C499&ref=nb_sb_noss','https://www.amazon.in/s?k=Samsung+Galaxy+Tab+A7+Lite&rh=n%3A976392031%2Cp_89%3ASamsung&dc&ds=v1%3AiCgkqAlEzhgJ2%2FubKo0dABNFH0bYFvbaylSxH%2BCUN%2Fo&crid=2J98K8TPBPWRD&qid=1672299698&rnid=3837712031&sprefix=samsung+galaxy+tab+a7+lite%2Caps%2C244&ref=sr_nr_p_89_1','https://www.amazon.in/s?k=Prisha+India+Craft+jug&crid=1ABTNQBGX9EUC&sprefix=prisha+india+craft+jug%2Caps%2C371&ref=nb_sb_noss','https://www.amazon.in/s?k=Womens+Embroidered+Rayon+Kurti&i=apparel&crid=1UW5XT38C7VLT&sprefix=womens+embroidered+rayon+kurti%2Capparel%2C234&ref=nb_sb_noss_2','https://www.amazon.in/s?k=Women%27s+Rayon+Kurti+with+Jacket&i=apparel&crid=3CR2HHXUKAN6H&sprefix=women+s+rayon+kurti+with+jacket%2Capparel%2C241&ref=nb_sb_noss','https://www.amazon.in/s?k=Women+Rayon+Anarkali+Printed+Dupatta+Set&i=apparel&crid=YB4F9E5SO4IH&sprefix=women+rayon+anarkali+printed+dupatta+set%2Capparel%2C429&ref=nb_sb_noss','https://www.amazon.in/s?k=HUDACRUSH&rh=n%3A1355016031%2Cp_89%3AHUDACRUSH&dc&ds=v1%3AWQ%2FKtt29vvaP3Nbztk3tPlUm2%2BDHOjZSIeS5Cs%2BVTQQ&qid=1672305828&rnid=3837712031&ref=sr_nr_p_89_1','https://www.amazon.in/s?k=Face+Serum&i=apparel&crid=1B0I6Z2NP9V5Z&sprefix=face+serum%2Capparel%2C321&ref=nb_sb_noss_1','https://www.amazon.in/s?k=Lipstick+Kajal&i=apparel&crid=1ALUUVZL3WXQN&sprefix=lipstick+kajal%2Capparel%2C231&ref=nb_sb_noss_1','https://www.amazon.in/s?k=EditLook+T-Shirt&i=apparel&rh=p_6%3AA1NEAFH2HSDFKH&dc&crid=3N5M6NNE9IJ6P&qid=1672306344&rnid=1318474031&sprefix=editlook+t-shirt%2Capparel%2C1001&ref=sr_nr_p_6_1&ds=v1%3ASNU4mL0vtDmRsopE4oCg7GF%2BldDc%2BI%2Fb1RJ0zbw3nJE','https://www.amazon.in/s?k=Classico+Tshirt&i=apparel&rh=n%3A1571271031%2Cn%3A1967851031&dc&ds=v1%3A2P9a9pxDJmX8p5uzS3%2BDx8LLIZ6R4unuq6GUsy85gdI&crid=30BC1X947M4A6&qid=1672306551&rnid=1571271031&sprefix=classico+tshirt%2Capparel%2C299&ref=sr_nr_n_4','https://www.amazon.in/s?k=men+socks+sport&rh=n%3A11960414031&ref=nb_sb_noss','https://www.amazon.in/s?k=EURO+Men+Brief+%28Pack+of+3%29&rh=n%3A11960414031&ref=nb_sb_noss','https://www.amazon.in/s?k=EURO+Solid+Men+Trunk+%28Pack+of+2%29&rh=n%3A11960414031&ref=nb_sb_noss','',]
 prod = []
 pree = []
 mrr = []
-for list in lists:
-    product = list.find('span',attrs={'class':"a-size-medium a-color-base a-text-normal"})
-    # prod.append(product)
-    # print(product.text.split('-')[0].strip())
-    # prod.append(product)
-    if product is not None:
-        ementa = product.text
-    else:
-        ementa = None
-    prod.append(ementa)
-    # # print(product)
-    sprice = list.find('span', attrs={'class':'a-price-whole'})
-    if sprice is not None:
-        sprr = sprice.text
-    else:
-        sprr = None
-    pree.append(sprr)
-    # pree.append(sprice)
-    # print(price)
-    mrp = list.find('span', attrs={'class':'a-offscreen'})
-    if mrp is not None:
-        mpp = mrp.text
-    else:
-        mpp = None
-    mrr.append(mpp)
-    # mrr.append(mrp)
+for url in URL:
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, 'lxml')
+    lists = soup.findAll('div',attrs={'class' :'sg-col-inner'})
 
-df = pd.DataFrame({'Product Name':prod,'Selling Price':pree, 'MRP':mrr}) 
 
-df.to_csv('AZphon.csv', index=False, encoding='utf-8',skiprows = 1) 
-df.head()
+    for list in lists:
+        product = list.find('span',attrs={'class':"a-size-base-plus a-color-base a-text-normal"}) 
+        if product is not None:
+            ementa = product.text
+        else:
+            ementa = None
+        prod.append(ementa)
+        sprice = list.find('span', attrs={'class':'a-price-whole'})
+        if sprice is not None:
+            sprr = sprice.text
+        else:
+            sprr = None
+        pree.append(sprr)
+        # pree.append(sprice)
+        # print(price)
+        mrp = list.find('span', attrs={'class':'a-price a-text-price'})
+        if mrp is not None:
+            mpp = mrp.text
+        else:
+            mpp = None
+        mrr.append(mpp)
+
+        # mrr.append(mrp)
+
+    df = pd.DataFrame({'Product Name':prod,'Selling Price':pree, 'MRP':mrr}) 
+    df.to_csv('AZ0-1288.csv', index=False, encoding='utf-8') 
+    
