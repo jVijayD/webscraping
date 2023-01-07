@@ -7,7 +7,138 @@ import pandas as pd
 
 
 
-URL = ['https://www.flipkart.com/search?q=Diva%27s%20Choice%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=lux%20venus%20white%20sleeveless%20vest%20pack%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Lux%20Cozi%20Men%20Cotton%20underwear%20pack%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Men%27s%20Slim%20Fit%20Jeans%20By%20Edit%20Look&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=%20Palazzo%20Rayon%20Fabric&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Kurta%20%26%20%20Color%20Sharara%20Set%20Rayon%20Fabric&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=%20Baby%20Girl%20Maxi%20Dress&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Ripening%20Baby%20Girls%20%26%20Flower%20Lace%20Layer%20Gown%20Dress&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off','https://www.flipkart.com/search?q=Ripening%20Baby%20Girls%20%20Mini%20Frock&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Ripening%20Baby%20Girls%20%20Ston%20Work%20Body%20Knee%20Length%20Frock&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off','https://www.flipkart.com/search?q=Ripening%20Baby%20Girl%20Satin%20Frock&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.amazon.in/s?k=Ripening+Baby+Girls+Maxi+Dress&i=apparel&crid=2ECL3KFY6ZM54&sprefix=ripening+baby+girls+maxi+dress%2Capparel%2C255&ref=nb_sb_noss','https://www.flipkart.com/search?q=DESHBANDHU%20KHADI%20Men%20%20Formal%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Saree+Mall+++Piece&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DAD%2BSaree%2BMall','https://www.flipkart.com/search?q=Girls%20Maxi%20%2F%20Full%20Length%20Party%20Dress%20-%20%20By%20My%20Lil%20Princess&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Girls+Maxi+%2F+Full+Length+Party+Dress+-++By+My+Lil+Princess&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DMy%2BLil%2BPrincess','https://www.flipkart.com/search?q=Divra+Clothing+kids+Hoodies&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DDivRa%2BClothing','https://www.flipkart.com/search?q=ALTEC%20LANSING&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Deshbandhu+Dbk+Men+Checkered+pack+of+2&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off&p%5B%5D=facets.brand%255B%255D%3DDESHBANDHU%2BDBK','https://www.flipkart.com/search?q=Mens+Cotton+Printed+Hoodie+By+Divra+Clothing+&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off&p%5B%5D=facets.brand%255B%255D%3DDivRa%2BClothing','https://www.flipkart.com/computers/laptops/pr?sid=6bo,b5g&q=Aspire+Laptop&otracker=categorytree','https://www.flipkart.com/computers/laptops/pr?sid=6bo%2Cb5g&q=Nitro++Laptop&otracker=categorytree&p%5B%5D=facets.brand%255B%255D%3Dacer','https://www.flipkart.com/computers/laptops/pr?sid=6bo%2Cb5g&q=Swift++Laptop+&otracker=categorytree&p%5B%5D=facets.brand%255B%255D%3Dacer','https://www.flipkart.com/search?q=samsung%20a32%20series&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=samsung%20a52%20series&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.amazon.in/s?k=samsung+a52&crid=2B92POGW3IGS7&sprefix=samsung+a52%2Caps%2C246&ref=nb_sb_noss_1','https://www.flipkart.com/search?q=samsung%20a72%20series&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=samsung%20a22%20series&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=samsung+galaxy+a03s&sid=tyy%2C4io&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_1_19_na_pm_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_1_19_na_pm_ps&as-pos=1&as-type=RECENT&suggestionId=samsung+galaxy+a03s%7CMobiles&requestId=b70f1863-9bf1-487a-83fb-8b08f68aac6b&as-searchtext=samsung%20A03s%20series','https://www.flipkart.com/search?q=samsung%20galaxy%20a52s&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=CR7%20Hoodie%20for%20Men%20By%20Divra%20Clothing&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=GLITO%20Printed%20Men%20Boxer%20%28Pack%20of%201%29&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Zesteez&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DZesteez','https://www.flipkart.com/search?q=glito+full+sleeve+solid+men+jacket&as=on&as-show=on&otracker=AS_Query_OrganicAutoSuggest_4_6_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_4_6_na_na_na&as-pos=4&as-type=RECENT&suggestionId=glito+full+sleeve+solid+men+jacket&requestId=81e0d7ce-fc62-4fbb-bf89-ae7f48ad69df&as-searchtext=GLITO%20','https://www.flipkart.com/search?q=GLITO+Casual+Regular+Sleeves+Solid+Women&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DGLITO','https://www.flipkart.com/search?q=GLITO%20Solid%20Men%20Track%20Suit&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=GLITO+Solid+Men+Round+Neck+Blue+T-Shirt&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DGLITO','https://www.flipkart.com/search?q=Apple%20iPhone%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Dell%2024%22%20%2860.96%20cm%29%20FHD%20Monitor&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off','https://www.flipkart.com/search?q=Samsung+Galaxy+Tab+A7+Lite+&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSAMSUNG','https://www.flipkart.com/kitchen-cookware-serveware/tableware-dinnerware/jugs/prisha-india-craft~brand/pr?sid=upp%2Ci7t%2C0st&p%5B%5D=facets.brand%255B%255D%3DPrisha%2BIndia%2BCraft','https://www.flipkart.com/search?q=Deshbandhu+Khadi+men+Straight+Kurta+%28Multicolor%29&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off&p%5B%5D=facets.brand%255B%255D%3DDESHBANDHU%2BKHADI','https://www.flipkart.com/search?q=Women%20Embroidry%20Printed%20Rayon%20Flared%20Kurti&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/womens-kurtas-kurtis/rayon~fabric/pr?sid=clo%2Ccfv%2Ccib%2Crkt','https://www.flipkart.com/search?q=Women%27s%20Embroidered%20Rayon%20Kurti&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Women%27s%20Rayon%20Kurti%20with%20Jacket&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/womens-ethnic-sets/anarkali-kurta-bottom-dupatta-set~type/pr?sid=clo%2Ccfv%2Citg%2Ctys','https://www.flipkart.com/search?q=Huda+Beauty&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DHUDA%2BNAILS&p%5B%5D=facets.brand%255B%255D%3DJolli%2BHuda&p%5B%5D=facets.brand%255B%255D%3DkHUDAt&p%5B%5D=facets.brand%255B%255D%3DNYN%2BHuda&p%5B%5D=facets.brand%255B%255D%3DHuda%2BGirl&p%5B%5D=facets.brand%255B%255D%3DHUDA%2BCRUSH&p%5B%5D=facets.brand%255B%255D%3DHuda%2BBar&p%5B%5D=facets.brand%255B%255D%3Dde%2Bhuda&p%5B%5D=facets.brand%255B%255D%3DAshav%2BHuda&p%5B%5D=facets.brand%255B%255D%3DADS%2BHUDA&p%5B%5D=facets.brand%255B%255D%3DSWIZ%2BHUDA&p%5B%5D=facets.brand%255B%255D%3DSh.Huda&p%5B%5D=facets.brand%255B%255D%3DTown%2BHuda','https://www.flipkart.com/beauty-and-grooming/makeup/face-makeup/face-makeup-combo/pr?sid=g9b,ffi,dzu,ww0&q=makeup&otracker=categorytree','https://www.flipkart.com/search?q=Face%20Serum&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Lipstick%20Kajal&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=EditLook%20%20T-Shirt&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off','https://www.flipkart.com/search?q=men%20socks%20sport%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Royals%20Pride%20Handicraft%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','https://www.flipkart.com/search?q=Royals%20Pride%20&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off','',]
+URL = ['https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=2',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=3',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=4',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=5',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=6',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=7',
+'https://www.flipkart.com/search?q=Jovees&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DJOVEES&p%5B%5D=facets.brand%255B%255D%3DJovees%2BHerbal&page=8','https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=6',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=7',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=8',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=9',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=10',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=11',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=12',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=13',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=14',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=15',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=16',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=17',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=18',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=19',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=20',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=21',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=22',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=23',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=24',
+'https://www.flipkart.com/search?q=VLCC&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=25','https://www.flipkart.com/search?q=Bare%20Essentials&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Bare+Essentials&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=Bare+Essentials&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=Bare+Essentials&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=Divo&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=6',
+'https://www.flipkart.com/search?q=Babila&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=7','https://www.flipkart.com/search?q=Oshea&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Oshea&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=6',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=7',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=8',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=9',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=10',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=11',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=12',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=13',
+'https://www.flipkart.com/search?q=ONNIX&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=14','https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=6',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=7',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=8',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=9',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=10',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=11',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=12',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=13',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=14',
+'https://www.flipkart.com/search?q=Myshka&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=15','https://www.flipkart.com/search?q=Al%20Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=6',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=7',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=8',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=9',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=10',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=11',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=12',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=13',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=14',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=15',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=16',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=17',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=18',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=19',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=20',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=21',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=22',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=23',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=24',
+'https://www.flipkart.com/search?q=Al+Nuaim&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=25','https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=2',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=3',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=4',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=5',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=6',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=7',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=8',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=9',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=10',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=11',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=12',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=13',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=14',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=15',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=16',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=17',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=18',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=19',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=20',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=21',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=22',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=23',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=24',
+'https://www.flipkart.com/search?q=Sukkhi&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&p%5B%5D=facets.brand%255B%255D%3DSukkhi&page=25','https://www.flipkart.com/search?q=BodyMark&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=BodyMark&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=BodyMark&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=BodyMark&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=BodyMark&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=5','https://www.flipkart.com/search?q=Flyer&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off',
+'https://www.flipkart.com/search?q=Flyer&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=2',
+'https://www.flipkart.com/search?q=Flyer&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=3',
+'https://www.flipkart.com/search?q=Flyer&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=4',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER&page=2',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER&page=3',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER&page=4',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER&page=5',
+'https://www.flipkart.com/search?q=flyer+men+leather+belt&sid=reh%2Cro3&as=on&as-show=on&otracker=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&otracker1=AS_QueryStore_OrganicAutoSuggest_2_6_na_na_na&as-pos=2&as-type=RECENT&suggestionId=flyer+men+leather+belt%7CBelts&requestId=0d4154a5-35a3-481c-be52-8136045e72f3&as-searchtext=Flyer+&p%5B%5D=facets.brand%255B%255D%3DFLYER&page=6']
 
 prod = []
 pree = []
@@ -18,7 +149,7 @@ for url in URL:
     lists = soup.findAll('div',attrs={'class' :'_1AtVbE col-12-12'})             
  
     for list in lists:
-        product = list.find('a',attrs={'class':"IRpwTa"}) 
+        product = list.find(attrs={'class':["s1Q9rs","IRpwTa","_4rR01T"]}) 
         if product is not None:
             ementa = product.text
         else:
@@ -41,13 +172,13 @@ for url in URL:
 
         # mrr.append(mrp)
 
-    df = pd.DataFrame({'Product Name':prod,'Selling Price':pree, 'MRP':mrr}) 
-    df.to_csv('Fksamp.csv', index=False, encoding='utf-8') 
+df = pd.DataFrame({'Product Name':prod,'Selling Price':pree, 'MRP':mrr}) 
+df.to_csv('FKallbrands5.csv', index=False, encoding='utf-8') 
     
  
      # print(product.text.split('-')[0].strip())
 
- 
+
    
 
 
